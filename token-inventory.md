@@ -8,7 +8,7 @@ Nothing here belongs to Civic Ink or any other brand. Values come later, one the
 
 ## How the layers work
 
-1. **Palette.** Each theme's raw colors and fonts, named however the theme likes: `acid`, `cobalt`, `Playfair`. Components never touch these.
+1. **Palette.** Each theme's raw colors and fonts, named however the theme likes: `acid`, `cobalt`, `Schibsted Grotesk`. Components never touch these.
 2. **Slots.** The names components use: `--primary`, `--font-heading`, `--radius`. Every theme fills every slot, usually by pointing at its own palette.
 3. **Component overrides.** A slot aimed at one component, like `--button-radius`. Avoid these. Add one only when a real theme needs it and a general slot can't do the job.
 
