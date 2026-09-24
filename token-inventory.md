@@ -1,6 +1,6 @@
 # Token inventory
 
-Draft 1 · September 2026 · Structure only, no values
+Draft 2 · September 2026 · Slot names and jobs. Neutral defaults live in `styles/tokens.css`
 
 This page lists every token slot the system needs. A theme is a file that fills in these slots. Components read the slots and never read a theme directly.
 
@@ -9,7 +9,7 @@ Nothing here belongs to Civic Ink or any other brand. Values come later, one the
 ## How the layers work
 
 1. **Palette.** Each theme's raw colors and fonts, named however the theme likes: `acid`, `cobalt`, `Schibsted Grotesk`. Components never touch these.
-2. **Slots.** The names components use: `--primary`, `--font-heading`, `--radius`. Every theme fills every slot, usually by pointing at its own palette.
+2. **Slots.** The names components use: `--primary`, `--typeface-heading`, `--radius`. Every theme fills every slot, usually by pointing at its own palette.
 3. **Component overrides.** A slot aimed at one component, like `--button-radius`. Avoid these. Add one only when a real theme needs it and a general slot can't do the job.
 
 This page covers layer 2.
@@ -17,17 +17,14 @@ This page covers layer 2.
 ## Legend
 
 - **shadcn** means the slot already exists and components use it.
-- **Add** means we create it. Components need no edits.
-- **Add + edit** means we create it and change some component code to read it.
-- **Decide** means an open question, listed at the bottom.
+- **Add** means we create it, and components we write or update will use it.
+- **Add + edit** means a shadcn component hardcodes this value today, so we change that code to read the slot.
 
 ## Themed vs. shared
 
-Themes change color, fonts, heading style, radius, border width, shadows, and focus style.
+Themes change color, fonts, heading style, radius, border width, shadows, focus style, and motion.
 
 Every theme shares spacing, the type size scale, breakpoints, and layout widths. If two projects feel different, it should be because of color, type, and shape. Changing spacing per theme breaks layouts in ways that are hard to spot.
-
-Motion is the exception, see question 4.
 
 ---
 
@@ -60,7 +57,6 @@ Each surface above has a matching `-foreground` slot for text on that surface: `
 | `--primary` | shadcn | Main action: primary buttons, selected states, checked boxes |
 | `--primary-foreground` | shadcn | Text on primary |
 | `--link` | Add | Inline links. shadcn styles links with `primary`, which breaks if primary is a pale color like acid |
-| `--brand` | Decide | A second brand color with no fixed job. See question 1 |
 
 ### Feedback
 
@@ -91,7 +87,7 @@ The `-subtle` slots matter more than they look. A solid red alert box is loud. M
 
 ### Sidebar
 
-shadcn has eight `--sidebar-*` slots. Decide, see question 2.
+shadcn has eight `--sidebar-*` slots. They default to the surface slots, so a theme only fills them in when it wants a sidebar that looks different from the page.
 
 ---
 
@@ -101,14 +97,14 @@ Tailwind 4 already has font slots. shadcn doesn't set them, so every theme inher
 
 | Slot | Status | Job |
 |---|---|---|
-| `--font-heading` | Add | Headings and display text |
-| `--font-body` | Add | Everything else. Maps to Tailwind's `--font-sans` |
-| `--font-mono` | Add | Code, IDs, tabular numbers |
-| `--font-weight-heading` | Add | A serif heading might want 400, a grotesk heading 700 |
-| `--tracking-heading` | Add | Tight tracking for large display type |
+| `--typeface-heading` | Add | Headings and display text |
+| `--typeface-body` | Add | Everything else. Feeds Tailwind's `font-sans` |
+| `--typeface-mono` | Add | Code, IDs, tabular numbers |
+| `--heading-weight` | Add | A serif heading might want 400, a grotesk heading 700 |
+| `--heading-tracking` | Add | Tight tracking for large display type |
 | `--heading-case` | Add | `none` or `uppercase` for headings |
 | `--label-case` | Add | `none` or `uppercase` for eyebrows, tags, and small labels |
-| `--tracking-label` | Add | Wider letter spacing for uppercase labels, which read cramped at default spacing |
+| `--label-tracking` | Add | Wider letter spacing for uppercase labels, which read cramped at default spacing |
 
 Write all copy in sentence case and let the case slots uppercase it. Screen readers then read the words normally, and switching themes never means rewriting copy.
 
@@ -129,15 +125,15 @@ Write all copy in sentence case and let the case slots uppercase it. Screen read
 
 ## 4. Elevation
 
-Tailwind has `--shadow-2xs` through `--shadow-2xl`, and shadcn components already use them. Themes redefine the values.
+shadcn components use Tailwind's `shadow-xs`, `shadow-md`, and `shadow-lg` classes. Three slots feed those classes, named by what they sit under.
 
-| Slot | Used for |
-|---|---|
-| `--shadow-xs` | Inputs, buttons |
-| `--shadow-md` | Dropdowns, popovers |
-| `--shadow-lg` | Dialogs, sheets |
+| Slot | Status | Job |
+|---|---|---|
+| `--elevation-control` | Add | Inputs, buttons. Feeds `shadow-xs` and `shadow-sm` |
+| `--elevation-popover` | Add | Dropdowns, popovers. Feeds `shadow-md` |
+| `--elevation-dialog` | Add | Dialogs, sheets. Feeds `shadow-lg` |
 
-A flat theme sets all three to `none`. A brutalist theme sets hard offset shadows like `4px 4px 0 var(--foreground)`. No new slots needed, only a rule about which size goes where.
+A flat theme sets all three to `none`. A brutalist theme sets hard offset shadows like `4px 4px 0 var(--foreground)`.
 
 ---
 
@@ -145,12 +141,17 @@ A flat theme sets all three to `none`. A brutalist theme sets hard offset shadow
 
 | Slot | Status | Job |
 |---|---|---|
-| `--duration-fast` | Add | Hover, toggles. Around 100ms |
-| `--duration-base` | Add | Menus opening, accordions |
-| `--duration-slow` | Add | Dialogs, page transitions |
-| `--ease-out`, `--ease-in-out` | Tailwind | Curves |
+Themes control both parts of motion. Duration is how long a movement takes. Easing is the speed curve during it.
 
-Every duration drops to 0 under `prefers-reduced-motion`. That rule lives in the system, not in each theme.
+| Slot | Status | Job |
+|---|---|---|
+| `--duration-fast` | Add | Hover, toggles. Default 100ms |
+| `--duration-base` | Add | Menus opening, accordions. Default 200ms |
+| `--duration-slow` | Add | Dialogs, page transitions. Default 300ms |
+| `--easing-out` | Add | Things arriving: fast start, gentle stop |
+| `--easing-in-out` | Add | Things moving from one place to another |
+
+Every duration drops to 0 under `prefers-reduced-motion`, whatever the theme says. That rule lives in the token file, and themes can't override it.
 
 ---
 
@@ -158,12 +159,17 @@ Every duration drops to 0 under `prefers-reduced-motion`. That rule lives in the
 
 shadcn handles states with hardcoded numbers inside components. Pulling them into slots lets a theme change them in one place.
 
+The hover slots default to the base color mixed 12% toward `--foreground`. That darkens on light themes and lightens on dark ones. A theme only sets them when the default looks muddy, which pale fills like acid will.
+
 | Slot | Status | Job |
 |---|---|---|
 | `--ring-width` | Add + edit | Focus ring thickness. shadcn uses 3px |
 | `--ring-offset` | Add + edit | Gap between element and ring |
 | `--disabled-opacity` | Add + edit | shadcn uses 50% |
-| Hover | Decide | See question 5 |
+| `--primary-hover` | Add | Hover fill for primary buttons |
+| `--secondary-hover` | Add | Hover fill for secondary buttons |
+| `--destructive-hover` | Add | Hover fill for destructive buttons |
+| `--link-hover` | Add | Link color on hover |
 
 Every theme must pass one rule. The focus ring hits 3:1 contrast against both `--background` and `--primary`. That's WCAG 1.4.11, and it's the check themes fail most often.
 
@@ -175,16 +181,16 @@ Breakpoints, container widths, and the spacing base unit are all shared. Tailwin
 
 ---
 
-## Open questions
+## Decisions
 
-Each has my recommendation. Mark up whichever ones you disagree with.
-
-1. **`--brand` slot.** Civic Ink has two accents. Other themes might have one or three. I'd skip a generic `--brand` slot. A color with no fixed job gets used everywhere and means nothing. If a theme has a second color, give it a job first, like `--link` or `--info`.
-2. **Sidebar slots.** Keep them only if your projects have app-style sidebars. The membership database probably does. I'd keep them and default them to the surface slots, so themes only fill them in when they want a different sidebar.
-3. **Heading case.** Resolved. Added `--heading-case`, `--label-case`, and `--tracking-label`.
-4. **Motion per theme.** Motion has two parts. Duration is how long a movement takes. Easing is the speed curve: a menu can slide in fast and settle gently, or overshoot and bounce back. I'd keep durations the same in every theme, so nothing feels sluggish in one project and rushed in another. Themes can change easing, which is where a playful theme gets its bounce.
-5. **Hover.** shadcn darkens on hover by fading the fill to 90% opacity. That works for dark fills and looks muddy on pale ones like acid. The fix is `--primary-hover`, `--secondary-hover`, and so on, which is six more slots. I'd add them. Muddy hover states are the first thing that makes a theme look cheap.
+1. **No generic `--brand` slot.** A color with no fixed job gets used everywhere and means nothing. A theme's second color gets a job, like `--link` or `--info`.
+2. **Sidebar slots stay,** defaulting to the surface slots.
+3. **Heading and label case are themed.** Copy stays in sentence case.
+4. **Themes control motion,** both duration and easing.
+5. **Explicit hover slots,** with a computed default so most themes can skip them.
 
 ## Count
 
-About 55 slots. shadcn supplies about 30. We add about 25, and 6 of those need component edits. Question 5 would add 6 more.
+72 slots. 16 of them compute themselves from other slots (hovers, subtle fills, sidebar), so a theme sets 56 at most and can usually leave the neutral defaults for many of those.
+
+shadcn's components already read 32 slots. The other 40 do nothing until components use them. That happens as we pull in each component, not all at once.

@@ -1,0 +1,293 @@
+/*
+ * Design system tokens
+ *
+ * Every slot in token-inventory.md, with neutral defaults. The defaults are
+ * plain grays and system fonts so components render before any theme exists.
+ * They are not a theme. A theme file overrides these slots under its own
+ * selector, [data-theme="name"], and loads after this file.
+ *
+ * Put the data-theme attribute on <html>. Dark mode is the .dark class,
+ * also on <html>, following shadcn.
+ *
+ * Load order in an app's main stylesheet:
+ *   @import "tailwindcss";
+ *   @import "./tokens.css";
+ *   @import "./themes/your-theme.css";
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+ * Slots with neutral defaults, light
+ * ------------------------------------------------------------------------- */
+
+:root {
+  /* Surfaces */
+  --background: #FFFFFF;
+  --card: #FFFFFF;
+  --popover: #FFFFFF;
+  --muted: #F4F4F5;
+  --secondary: #F4F4F5;
+  --accent: #F4F4F5;           /* Hover fill for menu items. Keep it neutral */
+  --overlay: #00000080;        /* Scrim behind dialogs */
+
+  /* Text on each surface */
+  --foreground: #18181B;
+  --card-foreground: #18181B;
+  --popover-foreground: #18181B;
+  --muted-foreground: #52525B;
+  --secondary-foreground: #18181B;
+  --accent-foreground: #18181B;
+
+  /* Action */
+  --primary: #18181B;
+  --primary-foreground: #FFFFFF;
+  --link: #1D4ED8;
+
+  /* Feedback. The -subtle slots are computed below */
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --success: #15803D;
+  --success-foreground: #FFFFFF;
+  --warning: #B45309;
+  --warning-foreground: #FFFFFF;
+  --info: #1D4ED8;
+  --info-foreground: #FFFFFF;
+
+  /* Lines */
+  --border: #E4E4E7;
+  --input: #D4D4D8;
+  --ring: #1D4ED8;
+
+  /* Data */
+  --chart-1: #1D4ED8;
+  --chart-2: #0F766E;
+  --chart-3: #B45309;
+  --chart-4: #7E22CE;
+  --chart-5: #BE185D;
+
+  /* Typography */
+  --typeface-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --typeface-heading: var(--typeface-body);
+  --typeface-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --heading-weight: 700;
+  --heading-tracking: -0.01em;
+  --heading-case: none;        /* none or uppercase */
+  --label-case: none;          /* none or uppercase */
+  --label-tracking: 0.06em;
+
+  /* Shape */
+  --radius: 0.5rem;            /* 0 for a sharp theme */
+  --border-width: 1px;
+
+  /* Elevation */
+  --elevation-control: 0 1px 2px #0000000D;
+  --elevation-popover: 0 4px 12px #0000001A;
+  --elevation-dialog: 0 12px 32px #00000026;
+
+  /* Motion */
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --easing-out: cubic-bezier(0.2, 0, 0, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* States */
+  --ring-width: 3px;
+  --ring-offset: 2px;
+  --disabled-opacity: 0.5;
+}
+
+/* ---------------------------------------------------------------------------
+ * Slots with neutral defaults, dark. Only colors change
+ * ------------------------------------------------------------------------- */
+
+.dark {
+  --background: #09090B;
+  --card: #18181B;
+  --popover: #18181B;
+  --muted: #27272A;
+  --secondary: #27272A;
+  --accent: #27272A;
+  --overlay: #000000B3;
+
+  --foreground: #FAFAFA;
+  --card-foreground: #FAFAFA;
+  --popover-foreground: #FAFAFA;
+  --muted-foreground: #A1A1AA;
+  --secondary-foreground: #FAFAFA;
+  --accent-foreground: #FAFAFA;
+
+  --primary: #FAFAFA;
+  --primary-foreground: #18181B;
+  --link: #60A5FA;
+
+  --destructive: #F87171;
+  --destructive-foreground: #18181B;
+  --success: #4ADE80;
+  --success-foreground: #18181B;
+  --warning: #FBBF24;
+  --warning-foreground: #18181B;
+  --info: #60A5FA;
+  --info-foreground: #18181B;
+
+  --border: #3F3F46;
+  --input: #52525B;
+  --ring: #60A5FA;
+
+  --chart-1: #60A5FA;
+  --chart-2: #2DD4BF;
+  --chart-3: #FBBF24;
+  --chart-4: #C084FC;
+  --chart-5: #F472B6;
+}
+
+/* ---------------------------------------------------------------------------
+ * Computed slots
+ *
+ * These are built from other slots. They're declared on every element that
+ * can carry a theme, so they recompute when a theme changes the slots they
+ * depend on. A theme can still set any of them directly.
+ * ------------------------------------------------------------------------- */
+
+:root,
+.dark,
+[data-theme] {
+  --primary-hover: color-mix(in oklab, var(--primary) 88%, var(--foreground));
+  --secondary-hover: color-mix(in oklab, var(--secondary) 88%, var(--foreground));
+  --destructive-hover: color-mix(in oklab, var(--destructive) 88%, var(--foreground));
+  --link-hover: color-mix(in oklab, var(--link) 80%, var(--foreground));
+
+  --destructive-subtle: color-mix(in oklab, var(--destructive) 12%, var(--background));
+  --success-subtle: color-mix(in oklab, var(--success) 12%, var(--background));
+  --warning-subtle: color-mix(in oklab, var(--warning) 12%, var(--background));
+  --info-subtle: color-mix(in oklab, var(--info) 12%, var(--background));
+
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--card-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+/* No theme can turn motion back on for someone who asked for less of it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    --duration-fast: 0ms !important;
+    --duration-base: 0ms !important;
+    --duration-slow: 0ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Tailwind mapping
+ *
+ * Turns slots into utility classes: bg-primary, text-muted-foreground,
+ * font-heading, tracking-label, shadow-md, rounded-lg, ease-out. "inline"
+ * makes each class read the slot at runtime, so switching themes needs no
+ * rebuild.
+ *
+ * Slot names never reuse Tailwind's own prefixes (--font-, --tracking-,
+ * --shadow-, --ease-). A slot called --font-mono would end up pointing at
+ * itself here.
+ * ------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-overlay: var(--overlay);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-subtle: var(--info-subtle);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--typeface-body);
+  --font-heading: var(--typeface-heading);
+  --font-mono: var(--typeface-mono);
+  --tracking-heading: var(--heading-tracking);
+  --tracking-label: var(--label-tracking);
+
+  /* shadcn's radius scale, all derived from one --radius */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+
+  --shadow-xs: var(--elevation-control);
+  --shadow-sm: var(--elevation-control);
+  --shadow-md: var(--elevation-popover);
+  --shadow-lg: var(--elevation-dialog);
+
+  --ease-out: var(--easing-out);
+  --ease-in-out: var(--easing-in-out);
+}
+
+/* ---------------------------------------------------------------------------
+ * Base styles that put the type slots to work
+ * ------------------------------------------------------------------------- */
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--typeface-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--typeface-heading);
+    font-weight: var(--heading-weight);
+    letter-spacing: var(--heading-tracking);
+    text-transform: var(--heading-case);
+  }
+}
