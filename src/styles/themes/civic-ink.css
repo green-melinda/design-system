@@ -3,7 +3,7 @@
  *
  * Started from Civic Ink v1.7 in working-with-me, then revised in the
  * September 2026 palette review: white page, cobalt primary by day, orange
- * warning. Success and chart colors are still the neutral defaults.
+ * warning, emerald success. Chart colors are still the neutral defaults.
  *
  * Fonts load separately: Playfair Display 700 and Schibsted Grotesk 400-600
  * from Google Fonts. Storybook loads them in .storybook/preview-head.html.
@@ -50,8 +50,10 @@
   --destructive: var(--ci-alarm);
   --destructive-foreground: #FFFFFF;
   --destructive-subtle: var(--ci-alarm-bg);
-  --warning: #EA580C;                    /* Orange, so it never reads as acid */
-  --warning-foreground: var(--ci-ink);
+  --success: #047857;                    /* Emerald */
+  --success-foreground: #FFFFFF;
+  --warning: #CC4D0A;                    /* Orange, so it never reads as acid. Darkest step that keeps white text at 4.5:1 */
+  --warning-foreground: #FFFFFF;
   --info: var(--ci-cobalt);
   --info-foreground: #FFFFFF;
 
@@ -107,7 +109,9 @@
   --primary-foreground: #0D0D0D;          /* Acid is light, so text on it stays dark */
   --primary-hover: var(--ci-acid-deep);
   --destructive-foreground: #0D0D0D;
+  --success: #34D399;
+  --success-foreground: #0D0D0D;
   --warning: #F97316;
-  --warning-foreground: #0D0D0D;
+  --warning-foreground: #0D0D0D;         /* White fails on the lighter night colors */
   --info-foreground: #0D0D0D;
 }
