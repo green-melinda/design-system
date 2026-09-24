@@ -13,8 +13,8 @@
   /* Palette. Only this block names colors; everything below points here */
   --ci-ink: #0D0D0D;
   --ci-paper: #F5F0E8;
-  --ci-acid: #D6E000;
-  --ci-acid-deep: #BCC500;
+  --ci-acid: #E2DC00;
+  --ci-acid-deep: #C9C000;
   --ci-cobalt: #1B4FD8;
   --ci-cobalt-deep: #143DAA;
   --ci-warm-rule: #E8E0D0;
@@ -39,10 +39,10 @@
   --secondary-foreground: var(--ci-ink);
   --accent-foreground: var(--ci-ink);
 
-  /* Action. Acid is for action, cobalt is for information */
-  --primary: var(--ci-acid);
-  --primary-foreground: var(--ci-ink);
-  --primary-hover: var(--ci-acid-deep);   /* The computed mix goes olive on acid */
+  /* Action. Cobalt by day, acid by night */
+  --primary: var(--ci-cobalt);
+  --primary-foreground: var(--ci-paper);
+  --primary-hover: var(--ci-cobalt-deep);
   --link: var(--ci-cobalt);
   --link-hover: var(--ci-cobalt-deep);
 
@@ -101,7 +101,9 @@
   --ci-alarm-bg: #1C0A0A;
 
   --overlay: #0D0D0DB3;
-  --primary-foreground: #0D0D0D;          /* Acid stays light, so text on it stays dark */
+  --primary: var(--ci-acid);
+  --primary-foreground: #0D0D0D;          /* Acid is light, so text on it stays dark */
+  --primary-hover: var(--ci-acid-deep);
   --destructive-foreground: #0D0D0D;
   --info-foreground: #0D0D0D;
 }
