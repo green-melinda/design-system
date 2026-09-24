@@ -106,7 +106,11 @@ Tailwind 4 already has font slots. shadcn doesn't set them, so every theme inher
 | `--font-mono` | Add | Code, IDs, tabular numbers |
 | `--font-weight-heading` | Add | A serif heading might want 400, a grotesk heading 700 |
 | `--tracking-heading` | Add | Tight tracking for large display type |
-| `--heading-case` | Decide | Some themes want uppercase headings or eyebrows. See question 3 |
+| `--heading-case` | Add | `none` or `uppercase` for headings |
+| `--label-case` | Add | `none` or `uppercase` for eyebrows, tags, and small labels |
+| `--tracking-label` | Add | Wider letter spacing for uppercase labels, which read cramped at default spacing |
+
+Write all copy in sentence case and let the case slots uppercase it. Screen readers then read the words normally, and switching themes never means rewriting copy.
 
 **Shared, not themed:** the size scale from `xs` to `9xl`, line heights, and body tracking. Tailwind provides all of these. A theme that needs bigger headings should pick a heading font with a larger x-height, not resize the scale.
 
@@ -177,8 +181,8 @@ Each has my recommendation. Mark up whichever ones you disagree with.
 
 1. **`--brand` slot.** Civic Ink has two accents. Other themes might have one or three. I'd skip a generic `--brand` slot. A color with no fixed job gets used everywhere and means nothing. If a theme has a second color, give it a job first, like `--link` or `--info`.
 2. **Sidebar slots.** Keep them only if your projects have app-style sidebars. The membership database probably does. I'd keep them and default them to the surface slots, so themes only fill them in when they want a different sidebar.
-3. **Heading case.** CSS can't swap `text-transform` through a variable in a clean way, so this becomes a class per theme. I'd leave it out of draft 1 and add it when a theme needs it.
-4. **Motion per theme.** A playful project might want bouncier curves. I'd keep durations shared and let themes change curves only.
+3. **Heading case.** Resolved. Added `--heading-case`, `--label-case`, and `--tracking-label`.
+4. **Motion per theme.** Motion has two parts. Duration is how long a movement takes. Easing is the speed curve: a menu can slide in fast and settle gently, or overshoot and bounce back. I'd keep durations the same in every theme, so nothing feels sluggish in one project and rushed in another. Themes can change easing, which is where a playful theme gets its bounce.
 5. **Hover.** shadcn darkens on hover by fading the fill to 90% opacity. That works for dark fills and looks muddy on pale ones like acid. The fix is `--primary-hover`, `--secondary-hover`, and so on, which is six more slots. I'd add them. Muddy hover states are the first thing that makes a theme look cheap.
 
 ## Count
