@@ -1,0 +1,108 @@
+/*
+ * Civic Ink
+ *
+ * Values from working-with-me/design-system/tokens.css v1.7. Slots Civic Ink
+ * never defined (success, warning, charts) are left out, so they fall back to
+ * the neutral defaults in tokens.css until the palette gets reviewed.
+ *
+ * Fonts load separately: Playfair Display 700 and Schibsted Grotesk 400-600
+ * from Google Fonts. Storybook loads them in .storybook/preview-head.html.
+ */
+
+[data-theme="civic-ink"] {
+  /* Palette. Only this block names colors; everything below points here */
+  --ci-ink: #0D0D0D;
+  --ci-paper: #F5F0E8;
+  --ci-acid: #D6E000;
+  --ci-acid-deep: #BCC500;
+  --ci-cobalt: #1B4FD8;
+  --ci-cobalt-deep: #143DAA;
+  --ci-warm-rule: #E8E0D0;
+  --ci-charcoal: #2A2A2A;
+  --ci-alarm: #DC2626;
+  --ci-alarm-bg: #FFF5F5;
+
+  /* Surfaces */
+  --background: var(--ci-paper);
+  --card: var(--ci-paper);
+  --popover: var(--ci-paper);
+  --muted: var(--ci-warm-rule);
+  --secondary: var(--ci-warm-rule);
+  --accent: var(--ci-warm-rule);
+  --overlay: #0D0D0D99;
+
+  /* Text */
+  --foreground: var(--ci-ink);
+  --card-foreground: var(--ci-ink);
+  --popover-foreground: var(--ci-ink);
+  --muted-foreground: var(--ci-charcoal);
+  --secondary-foreground: var(--ci-ink);
+  --accent-foreground: var(--ci-ink);
+
+  /* Action. Acid is for action, cobalt is for information */
+  --primary: var(--ci-acid);
+  --primary-foreground: var(--ci-ink);
+  --primary-hover: var(--ci-acid-deep);   /* The computed mix goes olive on acid */
+  --link: var(--ci-cobalt);
+  --link-hover: var(--ci-cobalt-deep);
+
+  /* Feedback */
+  --destructive: var(--ci-alarm);
+  --destructive-foreground: #FFFFFF;
+  --destructive-subtle: var(--ci-alarm-bg);
+  --info: var(--ci-cobalt);
+  --info-foreground: #FFFFFF;
+
+  /* Lines. Hard ink borders, cobalt focus ring */
+  --border: var(--ci-ink);
+  --input: var(--ci-ink);
+  --ring: var(--ci-cobalt);
+
+  /* Typography */
+  --typeface-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --typeface-body: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --typeface-mono: "Courier New", Courier, monospace;
+  --heading-weight: 700;
+  --heading-tracking: -0.02em;
+  --heading-case: none;
+  --label-case: uppercase;
+  --label-tracking: 0.08em;
+
+  /* Shape */
+  --radius: 4px;
+  --border-width: 1px;
+
+  /* Elevation. Civic Ink is flat */
+  --elevation-control: none;
+  --elevation-popover: none;
+  --elevation-dialog: none;
+
+  /* Motion */
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --duration-slow: 350ms;
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* States */
+  --ring-width: 2px;
+  --ring-offset: 2px;
+  --disabled-opacity: 0.4;
+}
+
+/* Civic Ink: Night. The same system working late, not an inversion */
+[data-theme="civic-ink"].dark {
+  --ci-ink: #F0EBE0;
+  --ci-paper: #111008;
+  --ci-cobalt: #4B7FFF;
+  --ci-cobalt-deep: #7FA3FF;
+  --ci-warm-rule: #2A2620;
+  --ci-charcoal: #8A8478;
+  --ci-alarm: #F87171;
+  --ci-alarm-bg: #1C0A0A;
+
+  --overlay: #000000B3;
+  --primary-foreground: #0D0D0D;          /* Acid stays light, so text on it stays dark */
+  --destructive-foreground: #0D0D0D;
+  --info-foreground: #0D0D0D;
+}

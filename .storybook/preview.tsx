@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import "../src/styles/globals.css";
 
 // Add each new theme here once its file is imported in globals.css.
-const themes = [{ value: "none", title: "Neutral defaults" }];
+const themes = [
+  { value: "none", title: "Neutral defaults" },
+  { value: "civic-ink", title: "Civic Ink" },
+];
 
 const preview: Preview = {
   globalTypes: {
