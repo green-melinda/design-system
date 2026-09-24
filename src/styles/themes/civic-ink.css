@@ -18,7 +18,7 @@
   --ci-cobalt: #1B4FD8;
   --ci-cobalt-deep: #143DAA;
   --ci-warm-rule: #E8E0D0;
-  --ci-charcoal: #2A2A2A;
+  --ci-charcoal: var(--ci-ink);        /* Secondary text is ink. Never absolute black */
   --ci-alarm: #DC2626;
   --ci-alarm-bg: #FFF5F5;
 
@@ -97,11 +97,10 @@
   --ci-cobalt: #4B7FFF;
   --ci-cobalt-deep: #7FA3FF;
   --ci-warm-rule: #2A2620;
-  --ci-charcoal: #8A8478;
   --ci-alarm: #F87171;
   --ci-alarm-bg: #1C0A0A;
 
-  --overlay: #000000B3;
+  --overlay: #0D0D0DB3;
   --primary-foreground: #0D0D0D;          /* Acid stays light, so text on it stays dark */
   --destructive-foreground: #0D0D0D;
   --info-foreground: #0D0D0D;
