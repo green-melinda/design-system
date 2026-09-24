@@ -116,8 +116,11 @@ Write all copy in sentence case and let the case slots uppercase it. Screen read
 
 | Slot | Status | Job |
 |---|---|---|
-| `--radius` | shadcn | One base value. shadcn derives `sm` through `4xl` from it. `0` makes a sharp theme |
+| `--radius` | shadcn | One base value on the 4pt grid. `0` makes a sharp theme |
+| `--corner-sm`, `-md`, `-lg`, `-xl` | Add | Every corner size. All four default to `--radius`, so corners are flat unless a theme asks for a graduated scale |
 | `--border-width` | Add + edit | shadcn hardcodes 1px. Brutalist themes want 2px. Touches most components |
+
+shadcn used to derive corner sizes by multiplying `--radius`, which put a 4px theme at 3.2px and 2.4px. The corner slots replace that, so every value a theme sets is a value you chose.
 
 `--border-width` is the most expensive slot on this page. It's still worth it, because border weight changes how a theme feels more than radius does.
 

@@ -77,7 +77,7 @@
   --label-tracking: 0.06em;
 
   /* Shape */
-  --radius: 0.5rem;            /* 0 for a sharp theme */
+  --radius: 8px;               /* 0 for a sharp theme. Keep it on the 4pt grid */
   --border-width: 1px;
 
   /* Elevation */
@@ -162,6 +162,13 @@
   --success-subtle: color-mix(in oklab, var(--success) 12%, var(--background));
   --warning-subtle: color-mix(in oklab, var(--warning) 12%, var(--background));
   --info-subtle: color-mix(in oklab, var(--info) 12%, var(--background));
+
+  /* Corners. Flat by default: every size is --radius. A theme that wants
+     graduated corners sets these four directly */
+  --corner-sm: var(--radius);
+  --corner-md: var(--radius);
+  --corner-lg: var(--radius);
+  --corner-xl: var(--radius);
 
   --sidebar: var(--card);
   --sidebar-foreground: var(--card-foreground);
@@ -258,11 +265,16 @@
   --tracking-heading: var(--heading-tracking);
   --tracking-label: var(--label-tracking);
 
-  /* shadcn's radius scale, all derived from one --radius */
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
+  /* Every Tailwind corner size reads a corner slot. rounded-full stays a
+     pill, for tags and avatars */
+  --radius-xs: var(--corner-sm);
+  --radius-sm: var(--corner-sm);
+  --radius-md: var(--corner-md);
+  --radius-lg: var(--corner-lg);
+  --radius-xl: var(--corner-xl);
+  --radius-2xl: var(--corner-xl);
+  --radius-3xl: var(--corner-xl);
+  --radius-4xl: var(--corner-xl);
 
   --shadow-xs: var(--elevation-control);
   --shadow-sm: var(--elevation-control);
