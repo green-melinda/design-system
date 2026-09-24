@@ -1,9 +1,9 @@
 /*
  * Civic Ink
  *
- * Values from working-with-me/design-system/tokens.css v1.7. Slots Civic Ink
- * never defined (success, warning, charts) are left out, so they fall back to
- * the neutral defaults in tokens.css until the palette gets reviewed.
+ * Started from Civic Ink v1.7 in working-with-me, then revised in the
+ * September 2026 palette review: white page, cobalt primary by day, orange
+ * warning. Success and chart colors are still the neutral defaults.
  *
  * Fonts load separately: Playfair Display 700 and Schibsted Grotesk 400-600
  * from Google Fonts. Storybook loads them in .storybook/preview-head.html.
@@ -12,12 +12,12 @@
 [data-theme="civic-ink"] {
   /* Palette. Only this block names colors; everything below points here */
   --ci-ink: #0D0D0D;
-  --ci-paper: #F5F0E8;
+  --ci-paper: #FFFFFF;
   --ci-acid: #E2DC00;
   --ci-acid-deep: #C9C000;
   --ci-cobalt: #1B4FD8;
   --ci-cobalt-deep: #143DAA;
-  --ci-warm-rule: #E8E0D0;
+  --ci-warm-rule: #EEF0F3;              /* Cool light gray. Name kept so nothing else changes */
   --ci-charcoal: var(--ci-ink);        /* Secondary text is ink. Never absolute black */
   --ci-alarm: #DC2626;
   --ci-alarm-bg: #FFF5F5;
@@ -41,7 +41,7 @@
 
   /* Action. Cobalt by day, acid by night */
   --primary: var(--ci-cobalt);
-  --primary-foreground: var(--ci-paper);
+  --primary-foreground: #FFFFFF;
   --primary-hover: var(--ci-cobalt-deep);
   --link: var(--ci-cobalt);
   --link-hover: var(--ci-cobalt-deep);
@@ -50,6 +50,8 @@
   --destructive: var(--ci-alarm);
   --destructive-foreground: #FFFFFF;
   --destructive-subtle: var(--ci-alarm-bg);
+  --warning: #EA580C;                    /* Orange, so it never reads as acid */
+  --warning-foreground: var(--ci-ink);
   --info: var(--ci-cobalt);
   --info-foreground: #FFFFFF;
 
@@ -105,5 +107,7 @@
   --primary-foreground: #0D0D0D;          /* Acid is light, so text on it stays dark */
   --primary-hover: var(--ci-acid-deep);
   --destructive-foreground: #0D0D0D;
+  --warning: #F97316;
+  --warning-foreground: #0D0D0D;
   --info-foreground: #0D0D0D;
 }
