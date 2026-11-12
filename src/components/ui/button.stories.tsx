@@ -30,9 +30,9 @@ export const AllVariants: Story = {
       <Button variant="outline">Export CSV</Button>
       <Button variant="ghost">Skip for now</Button>
       <Button variant="destructive">
-        <Trash2 aria-hidden /> Delete member
+        <Trash2 aria-hidden /> Delete file
       </Button>
-      <Button variant="link">View membership history</Button>
+      <Button variant="link">View version history</Button>
     </div>
   ),
 };

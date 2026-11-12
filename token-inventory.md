@@ -136,7 +136,7 @@ shadcn components use Tailwind's `shadow-xs`, `shadow-md`, and `shadow-lg` class
 | `--elevation-popover` | Add | Dropdowns, popovers. Feeds `shadow-md` |
 | `--elevation-dialog` | Add | Dialogs, sheets. Feeds `shadow-lg` |
 
-A flat theme sets all three to `none`. A brutalist theme sets hard offset shadows like `4px 4px 0 var(--foreground)`.
+A flat theme sets all three to `0 0 #0000`, an invisible shadow. Never `none`: Tailwind combines shadows and focus rings into one list, and `none` inside it erases the focus ring. A brutalist theme sets hard offset shadows like `4px 4px 0 var(--foreground)`.
 
 ---
 

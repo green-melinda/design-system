@@ -292,6 +292,13 @@
  * ------------------------------------------------------------------------- */
 
 @layer base {
+  /* Focus ring gap color, set once here. Components set only the gap width
+     (ring-offset-(length:--ring-offset)). Putting ring-offset-background in a
+     component next to the width makes cn() drop one of the two classes */
+  *, ::before, ::after {
+    --tw-ring-offset-color: var(--background);
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
