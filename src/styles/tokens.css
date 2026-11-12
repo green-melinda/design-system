@@ -29,7 +29,7 @@
   --muted: #F4F4F5;
   --secondary: #F4F4F5;
   --accent: #F4F4F5;           /* Hover fill for menu items. Keep it neutral */
-  --overlay: #00000080;        /* Scrim behind dialogs */
+  --overlay: #18181B80;        /* Scrim behind dialogs. Near-black, never #000 */
 
   /* Text on each surface */
   --foreground: #18181B;
@@ -109,7 +109,7 @@
   --muted: #27272A;
   --secondary: #27272A;
   --accent: #27272A;
-  --overlay: #000000B3;
+  --overlay: #09090BB3;
 
   --foreground: #FAFAFA;
   --card-foreground: #FAFAFA;
@@ -153,7 +153,9 @@
 :root,
 .dark,
 [data-theme] {
-  --primary-hover: color-mix(in oklab, var(--primary) 88%, var(--foreground));
+  /* Primary mixes toward its own label color, which always contrasts with it.
+     Mixing toward --foreground did nothing when primary is the text color */
+  --primary-hover: color-mix(in oklab, var(--primary) 88%, var(--primary-foreground));
   --secondary-hover: color-mix(in oklab, var(--secondary) 88%, var(--foreground));
   --destructive-hover: color-mix(in oklab, var(--destructive) 88%, var(--foreground));
   --link-hover: color-mix(in oklab, var(--link) 80%, var(--foreground));

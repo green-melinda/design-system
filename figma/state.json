@@ -1,0 +1,48 @@
+{
+  "note": "IDs of what scripts created in the Figma file. Lets a later session find and update things without duplicating them.",
+  "fileKey": "F5WxlYcN6W1z3K56I9OoEu",
+  "fileUrl": "https://www.figma.com/design/F5WxlYcN6W1z3K56I9OoEu",
+  "collections": {
+    "Theme": {
+      "id": "VariableCollectionId:3:2",
+      "modes": {
+        "Civic Ink": "3:0",
+        "Neutral": "3:1"
+      }
+    },
+    "Color": {
+      "id": "VariableCollectionId:3:3",
+      "modes": {
+        "Light": "3:2",
+        "Dark": "3:3"
+      }
+    },
+    "Spacing": {
+      "id": "VariableCollectionId:3:4",
+      "modes": {
+        "Value": "3:4"
+      }
+    }
+  },
+  "completedSteps": [
+    "P0",
+    "P1.a",
+    "P1.b",
+    "P1.c",
+    "P1.d",
+    "P1.e",
+    "P1.g"
+  ],
+  "variables": {
+    "Theme": "96 hidden colors (day/*, night/*) + shape/*, state/*, type/* (109 total)",
+    "Color": "48 slots in surface/, text/, action/, feedback/, line/, chart/, sidebar/",
+    "Spacing": "14 steps, space/0 to space/128"
+  },
+  "pages": {
+    "Foundations": "0:1"
+  },
+  "frames": {
+    "Color check": "4:174"
+  },
+  "next": "Text styles (deferred from P1), then Phase 2 pages and docs"
+}
