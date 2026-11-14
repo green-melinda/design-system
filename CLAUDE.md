@@ -16,6 +16,7 @@ A themeable component library for Melinda's personal projects. shadcn/ui compone
 - Slot names never start with a Tailwind prefix (`--font-`, `--tracking-`, `--shadow-`, `--ease-`, `--color-`). Those names belong to the mapping in `tokens.css`.
 - Themes and dark mode go on `<html>`: `data-theme="name"` and the `.dark` class.
 - A new theme also goes in the Theme toolbar list in `.storybook/preview.tsx`.
+- After `npx shadcn add`, run `touch src/styles/globals.css` so the running Storybook generates the new file's classes. Otherwise the component renders unstyled.
 - After `npx shadcn add`, check the generated imports and replace hardcoded values with slots. Hover uses the `-hover` slots, not `/90` opacity. Focus ring width, disabled opacity, border width, and transition timing use their slots.
 - Every component gets a story next to it: `button.tsx` and `button.stories.tsx`.
 - Fields get a visible label and, when needed, helper text below. Don't use placeholder text to carry labels or instructions, in stories or in projects. Components still style placeholders with the `--placeholder` slot in case one shows up.

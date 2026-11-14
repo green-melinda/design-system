@@ -1,8 +1,8 @@
 /* The one stylesheet an app or Storybook loads. Themes get imported below tokens. */
 @import "tailwindcss";
-/* Scan every file under src for classes, including files added while
-   Storybook is running. Without this, new components render unstyled
-   until a restart */
+/* Scan every file under src for classes. Storybook still misses files
+   created while it's running: after adding a component, save this file
+   (touch src/styles/globals.css) and its classes appear */
 @source "../";
 @import "tw-animate-css";
 @import "./tokens.css";
