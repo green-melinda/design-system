@@ -67,6 +67,25 @@ export const SolidVsTinted: Story = {
   ),
 };
 
+// Text only. Still accessible: the word carries the meaning, color backs it up.
+export const WithoutIcons: Story = {
+  render: () => (
+    <div className="grid gap-4">
+      {(["tinted", "solid"] as const).map((appearance) => (
+        <div key={appearance} className="grid gap-2">
+          <p className="text-sm text-muted-foreground">{appearance === "tinted" ? "Tinted (default)" : "Solid"}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge appearance={appearance} variant="success">Published</Badge>
+            <Badge appearance={appearance} variant="warning">Needs review</Badge>
+            <Badge appearance={appearance} variant="info">Shared</Badge>
+            <Badge appearance={appearance} variant="destructive">Upload failed</Badge>
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const Heights: Story = {
   render: () => (
     <div className="grid gap-4">
