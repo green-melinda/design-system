@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils"
 
 // Badges are labels, so they read the label slots: themes decide whether
 // they're uppercase and how wide the letter spacing is.
-// Fixed heights keep them on the 4pt grid: sm is 20px, md is 24px.
+// Fixed heights keep them on the 4pt grid: md (24px) by default, sm (20px)
+// for dense places like table rows. Status badges are tinted by default in
+// both modes; solid is for the rare status that has to stand out.
 const badgeVariants = cva(
   "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-sm border-(length:--border-width) border-transparent text-xs font-medium whitespace-nowrap [text-transform:var(--label-case)] tracking-label transition-[color,background-color,box-shadow] duration-(--duration-fast) ease-out focus-visible:ring-(length:--ring-width) focus-visible:ring-ring focus-visible:ring-offset-(length:--ring-offset) outline-none [&>svg]:pointer-events-none [&>svg]:size-3",
   {
@@ -40,8 +42,8 @@ const badgeVariants = cva(
     ],
     defaultVariants: {
       variant: "default",
-      appearance: "solid",
-      size: "sm",
+      appearance: "tinted",
+      size: "md",
     },
   }
 )
@@ -49,8 +51,8 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant = "default",
-  appearance = "solid",
-  size = "sm",
+  appearance = "tinted",
+  size = "md",
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
