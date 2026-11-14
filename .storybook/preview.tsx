@@ -28,7 +28,7 @@ const preview: Preview = {
       },
     },
   },
-  initialGlobals: { theme: "none", mode: "light" },
+  initialGlobals: { theme: "civic-ink", mode: "light" },
 
   // Themes and dark mode live on <html>, the same place an app puts them.
   decorators: [

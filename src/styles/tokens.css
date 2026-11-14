@@ -77,7 +77,7 @@
   --label-tracking: 0.06em;
 
   /* Shape */
-  --radius: 8px;               /* 0 for a sharp theme. Keep it on the 4pt grid */
+  --radius: 4px;               /* 0 for a sharp theme. Keep it on the 4pt grid */
   --border-width: 1px;
 
   /* Elevation */
