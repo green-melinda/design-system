@@ -12,6 +12,7 @@ const meta = {
       control: "select",
       options: ["default", "secondary", "outline", "success", "warning", "info", "destructive"],
     },
+    appearance: { control: "inline-radio", options: ["solid", "tinted"] },
   },
 } satisfies Meta<typeof Badge>;
 
@@ -42,6 +43,25 @@ export const WithIcons: Story = {
       <Badge variant="warning"><AlertTriangle aria-hidden /> Needs review</Badge>
       <Badge variant="info"><Info aria-hidden /> Shared</Badge>
       <Badge variant="destructive"><X aria-hidden /> Upload failed</Badge>
+    </div>
+  ),
+};
+
+// Side by side, to choose a default. Tinted only changes the four status colors.
+export const SolidVsTinted: Story = {
+  render: () => (
+    <div className="grid gap-4">
+      {(["solid", "tinted"] as const).map((appearance) => (
+        <div key={appearance} className="grid gap-2">
+          <p className="text-sm text-muted-foreground">{appearance === "solid" ? "Solid" : "Tinted"}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge appearance={appearance} variant="success"><Check aria-hidden /> Published</Badge>
+            <Badge appearance={appearance} variant="warning"><AlertTriangle aria-hidden /> Needs review</Badge>
+            <Badge appearance={appearance} variant="info"><Info aria-hidden /> Shared</Badge>
+            <Badge appearance={appearance} variant="destructive"><X aria-hidden /> Upload failed</Badge>
+          </div>
+        </div>
+      ))}
     </div>
   ),
 };

@@ -71,7 +71,7 @@
   --heading-tracking: -0.02em;
   --heading-case: none;
   --label-case: uppercase;
-  --label-tracking: 0.08em;
+  --label-tracking: 0.04em;               /* 0.08em read too wide on badges */
 
   /* Shape */
   --radius: 2px;                         /* Nearly square. Off the 4pt grid on purpose */

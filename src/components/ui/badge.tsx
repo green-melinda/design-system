@@ -20,9 +20,23 @@ const badgeVariants = cva(
         info: "bg-info text-info-foreground",
         destructive: "bg-destructive text-destructive-foreground [a&]:hover:bg-destructive-hover",
       },
+      // Tinted: pale fill and a status-colored border, with text in the
+      // foreground color. Status-colored text fails contrast on some pale
+      // fills (orange on pale orange is 3.89:1), so the color stays out of the text.
+      appearance: {
+        solid: "",
+        tinted: "",
+      },
     },
+    compoundVariants: [
+      { appearance: "tinted", variant: "success", className: "border-success bg-success-subtle text-foreground" },
+      { appearance: "tinted", variant: "warning", className: "border-warning bg-warning-subtle text-foreground" },
+      { appearance: "tinted", variant: "info", className: "border-info bg-info-subtle text-foreground" },
+      { appearance: "tinted", variant: "destructive", className: "border-destructive bg-destructive-subtle text-foreground" },
+    ],
     defaultVariants: {
       variant: "default",
+      appearance: "solid",
     },
   }
 )
@@ -30,6 +44,7 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant = "default",
+  appearance = "solid",
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -40,7 +55,8 @@ function Badge({
     <Comp
       data-slot="badge"
       data-variant={variant}
-      className={cn(badgeVariants({ variant }), className)}
+      data-appearance={appearance}
+      className={cn(badgeVariants({ variant, appearance }), className)}
       {...props}
     />
   )
