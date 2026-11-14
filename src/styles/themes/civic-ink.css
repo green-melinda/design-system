@@ -74,7 +74,7 @@
   --label-tracking: 0.08em;
 
   /* Shape */
-  --radius: 4px;
+  --radius: 2px;                         /* Nearly square. Off the 4pt grid on purpose */
   --border-width: 1px;
 
   /* Elevation. Civic Ink is flat. Use a zero-size transparent shadow, never

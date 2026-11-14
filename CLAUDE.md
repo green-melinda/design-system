@@ -19,7 +19,7 @@ A themeable component library for Melinda's personal projects. shadcn/ui compone
 - After `npx shadcn add`, check the generated imports and replace hardcoded values with slots. Hover uses the `-hover` slots, not `/90` opacity. Focus ring width, disabled opacity, border width, and transition timing use their slots.
 - Every component gets a story next to it: `button.tsx` and `button.stories.tsx`.
 - Fields get a visible label and, when needed, helper text below. Don't use placeholder text to carry labels or instructions, in stories or in projects. Components still style placeholders with the `--placeholder` slot in case one shows up.
-- Everything sits on the 4pt grid: spacing, sizes, gaps, corners, and slot values. Prefer 8pt steps where they fit. Half steps like `px-1.5` or `gap-2.5` (6px, 10px) are off-grid. Only border and focus ring widths (1px to 3px) are exempt.
+- Everything sits on the 4pt grid: spacing, sizes, gaps, corners, and slot values. Prefer 8pt steps where they fit. Half steps like `px-1.5` or `gap-2.5` (6px, 10px) are off-grid. Only border and focus ring widths (1px to 3px) and a 2px corner radius are exempt.
 
 ## Storybook
 
