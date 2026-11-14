@@ -160,6 +160,10 @@
   --destructive-hover: color-mix(in oklab, var(--destructive) 88%, var(--foreground));
   --link-hover: color-mix(in oklab, var(--link) 80%, var(--foreground));
 
+  /* Placeholder text. Themes whose secondary text matches body text must set
+     this lighter, or placeholders read as values someone already typed */
+  --placeholder: var(--muted-foreground);
+
   --destructive-subtle: color-mix(in oklab, var(--destructive) 12%, var(--background));
   --success-subtle: color-mix(in oklab, var(--success) 12%, var(--background));
   --warning-subtle: color-mix(in oklab, var(--warning) 12%, var(--background));
@@ -215,6 +219,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-placeholder: var(--placeholder);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary-hover: var(--secondary-hover);

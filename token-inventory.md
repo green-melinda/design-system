@@ -50,6 +50,10 @@ Each surface above has a matching `-foreground` slot for text on that surface: `
 
 `--muted-foreground` does double duty as secondary text anywhere, like captions and helper text.
 
+`--placeholder` is placeholder text in fields. It defaults to `--muted-foreground`. A theme whose secondary text matches body text has to set it lighter, or placeholders look like values someone already typed. It still needs 4.5:1 against the field.
+
+Prefer a label plus helper text below the field over placeholders. Placeholder text disappears as soon as someone types, so it can't carry instructions.
+
 ### Action and brand
 
 | Slot | Status | Job |

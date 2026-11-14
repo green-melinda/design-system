@@ -10,7 +10,7 @@ const MODES = ["light", "dark"];
 
 const COLOR_SLOTS = [
   "background", "foreground", "card", "card-foreground", "popover", "popover-foreground",
-  "muted", "muted-foreground", "secondary", "secondary-foreground", "secondary-hover",
+  "muted", "muted-foreground", "placeholder", "secondary", "secondary-foreground", "secondary-hover",
   "accent", "accent-foreground", "overlay",
   "primary", "primary-foreground", "primary-hover", "link", "link-hover",
   "destructive", "destructive-foreground", "destructive-hover", "destructive-subtle",

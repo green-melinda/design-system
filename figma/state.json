@@ -44,5 +44,8 @@
   "frames": {
     "Color check": "4:174"
   },
-  "next": "Text styles (deferred from P1), then Phase 2 pages and docs"
+  "next": "Text styles (deferred from P1), then Phase 2 pages and docs",
+  "pendingSync": [
+    "Add color slot text/placeholder (Civic Ink day #6B6E73, night #8E897F; Neutral = muted-foreground #52525B day, #A1A1AA night). Re-run scripts/extract-figma-tokens.js first."
+  ]
 }

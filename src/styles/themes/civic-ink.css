@@ -36,6 +36,7 @@
   --card-foreground: var(--ci-ink);
   --popover-foreground: var(--ci-ink);
   --muted-foreground: var(--ci-charcoal);
+  --placeholder: #6B6E73;                /* Cool gray, 5.12:1 on white. Lighter than ink so it never reads as a value */
   --secondary-foreground: var(--ci-ink);
   --accent-foreground: var(--ci-ink);
 
@@ -107,6 +108,7 @@
   --ci-alarm-bg: #1C0A0A;
 
   --overlay: #0D0D0DB3;
+  --placeholder: #8E897F;                /* Warm gray, 5.48:1 on the night background */
   --primary: var(--ci-acid);
   --primary-foreground: #0D0D0D;          /* Acid is light, so text on it stays dark */
   --primary-hover: var(--ci-acid-deep);
