@@ -35,7 +35,7 @@
   ],
   "variables": {
     "Theme": "96 hidden colors (day/*, night/*) + shape/*, state/*, type/* (109 total)",
-    "Color": "48 slots in surface/, text/, action/, feedback/, line/, chart/, sidebar/",
+    "Color": "49 slots (text/placeholder added 2026-11-14)",
     "Spacing": "14 steps, space/0 to space/128"
   },
   "pages": {
@@ -45,8 +45,6 @@
     "Color check": "4:174"
   },
   "next": "Text styles (deferred from P1), then Phase 2 pages and docs",
-  "pendingSync": [
-    "Add color slot text/placeholder (Civic Ink day #6B6E73, night #8E897F; Neutral = muted-foreground #52525B day, #A1A1AA night). Re-run scripts/extract-figma-tokens.js first.",
-    "Radius and corner-sm/md/lg/xl: 2 in both themes (was Civic Ink 4, Neutral 8)"
-  ]
+  "pendingSync": [],
+  "lastSync": "2026-11-14: placeholder slot, corners 2px in both themes"
 }
