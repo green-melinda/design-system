@@ -13,6 +13,7 @@ const meta = {
       options: ["default", "secondary", "outline", "success", "warning", "info", "destructive"],
     },
     appearance: { control: "inline-radio", options: ["solid", "tinted"] },
+    size: { control: "inline-radio", options: ["sm", "md"] },
   },
 } satisfies Meta<typeof Badge>;
 
@@ -60,6 +61,26 @@ export const SolidVsTinted: Story = {
             <Badge appearance={appearance} variant="info"><Info aria-hidden /> Shared</Badge>
             <Badge appearance={appearance} variant="destructive"><X aria-hidden /> Upload failed</Badge>
           </div>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const Heights: Story = {
+  render: () => (
+    <div className="grid gap-4">
+      {(["sm", "md"] as const).map((size) => (
+        <div key={size} className="grid gap-2">
+          <p className="text-sm text-muted-foreground">{size === "sm" ? "20px" : "24px"}</p>
+          {(["solid", "tinted"] as const).map((appearance) => (
+            <div key={appearance} className="flex flex-wrap items-center gap-2">
+              <Badge size={size} appearance={appearance} variant="success"><Check aria-hidden /> Published</Badge>
+              <Badge size={size} appearance={appearance} variant="warning"><AlertTriangle aria-hidden /> Needs review</Badge>
+              <Badge size={size} appearance={appearance} variant="info"><Info aria-hidden /> Shared</Badge>
+              <Badge size={size} appearance={appearance} variant="destructive"><X aria-hidden /> Upload failed</Badge>
+            </div>
+          ))}
         </div>
       ))}
     </div>

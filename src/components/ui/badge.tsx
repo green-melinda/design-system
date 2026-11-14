@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils"
 
 // Badges are labels, so they read the label slots: themes decide whether
 // they're uppercase and how wide the letter spacing is.
-// Fixed 20px height keeps them on the 4pt grid.
+// Fixed heights keep them on the 4pt grid: sm is 20px, md is 24px.
 const badgeVariants = cva(
-  "inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-sm border-(length:--border-width) border-transparent px-2 text-xs font-medium whitespace-nowrap [text-transform:var(--label-case)] tracking-label transition-[color,background-color,box-shadow] duration-(--duration-fast) ease-out focus-visible:ring-(length:--ring-width) focus-visible:ring-ring focus-visible:ring-offset-(length:--ring-offset) outline-none [&>svg]:pointer-events-none [&>svg]:size-3",
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-sm border-(length:--border-width) border-transparent text-xs font-medium whitespace-nowrap [text-transform:var(--label-case)] tracking-label transition-[color,background-color,box-shadow] duration-(--duration-fast) ease-out focus-visible:ring-(length:--ring-width) focus-visible:ring-ring focus-visible:ring-offset-(length:--ring-offset) outline-none [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
@@ -27,6 +27,10 @@ const badgeVariants = cva(
         solid: "",
         tinted: "",
       },
+      size: {
+        sm: "h-5 px-2",
+        md: "h-6 px-2",
+      },
     },
     compoundVariants: [
       { appearance: "tinted", variant: "success", className: "border-success bg-success-subtle text-foreground" },
@@ -37,6 +41,7 @@ const badgeVariants = cva(
     defaultVariants: {
       variant: "default",
       appearance: "solid",
+      size: "sm",
     },
   }
 )
@@ -45,6 +50,7 @@ function Badge({
   className,
   variant = "default",
   appearance = "solid",
+  size = "sm",
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -56,7 +62,8 @@ function Badge({
       data-slot="badge"
       data-variant={variant}
       data-appearance={appearance}
-      className={cn(badgeVariants({ variant, appearance }), className)}
+      data-size={size}
+      className={cn(badgeVariants({ variant, appearance, size }), className)}
       {...props}
     />
   )
