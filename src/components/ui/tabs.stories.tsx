@@ -46,6 +46,28 @@ export const Line: Story = {
   ),
 };
 
+// The list rule becomes the panel's top edge, so the active tab opens into the panel.
+export const Enclosed: Story = {
+  render: (args) => (
+    <Tabs {...args} className="max-w-md gap-0">
+      <TabsList variant="enclosed" className="w-full">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="activity">Activity</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      {["overview", "activity", "settings"].map((value, i) => (
+        <TabsContent
+          key={value}
+          value={value}
+          className="rounded-b-md border-(length:--border-width) border-t-0 border-border p-4 text-sm"
+        >
+          {["Three files changed this week. The last edit was Tuesday at 4:12pm.", "Sam uploaded two files and renamed one folder.", "Only people you invite can see this project."][i]}
+        </TabsContent>
+      ))}
+    </Tabs>
+  ),
+};
+
 export const WithDisabledTab: Story = {
   render: (args) => (
     <Tabs {...args} className="max-w-md">
@@ -69,6 +91,33 @@ export const Vertical: Story = {
       </TabsList>
       {panels}
     </Tabs>
+  ),
+};
+
+// Three looks on the same Radix tabs. Keyboard and screen reader behavior is identical in all of them.
+const styles = [
+  { variant: "segmented", label: "Segmented (default)" },
+  { variant: "line", label: "Line" },
+  { variant: "enclosed", label: "Enclosed" },
+] as const;
+
+export const StyleComparison: Story = {
+  render: () => (
+    <div className="grid max-w-md gap-8">
+      {styles.map(({ variant, label }) => (
+        <div key={variant} className="grid gap-2">
+          <p className="text-sm text-muted-foreground">{label}</p>
+          <Tabs defaultValue="overview" className="gap-3">
+            <TabsList variant={variant} aria-label={`${label} example`}>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="activity">Activity</TabsTrigger>
+              <TabsTrigger value="settings">Settings</TabsTrigger>
+            </TabsList>
+            {panels}
+          </Tabs>
+        </div>
+      ))}
+    </div>
   ),
 };
 

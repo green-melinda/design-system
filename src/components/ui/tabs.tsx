@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils"
 // - segmented (default): muted track, active tab is a background-colored chip.
 //   Track 36px with 4px padding, so triggers are 28px.
 // - line: tabs over a border rule, active tab underlined in the primary color.
+// - enclosed: folder tabs over a rule. The active tab joins the panel below.
+//   Horizontal only. Pair it with a bordered panel (see the Enclosed story).
 
 function Tabs({
   className,
@@ -32,6 +34,7 @@ const tabsListVariants = cva(
       variant: {
         segmented: "rounded-lg bg-muted p-1 group-data-[orientation=horizontal]/tabs:h-9",
         line: "gap-4 group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=horizontal]/tabs:border-b-(length:--border-width) group-data-[orientation=horizontal]/tabs:border-border group-data-[orientation=vertical]/tabs:gap-1 group-data-[orientation=vertical]/tabs:border-r-(length:--border-width) group-data-[orientation=vertical]/tabs:border-border",
+        enclosed: "items-end gap-1 h-9 border-b-(length:--border-width) border-border",
       },
     },
     defaultVariants: {
@@ -82,6 +85,10 @@ function TabsTrigger({
         "group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:-bottom-px group-data-[orientation=horizontal]/tabs:after:h-0.5",
         "group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-px group-data-[orientation=vertical]/tabs:after:w-0.5",
         "group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100",
+        // Enclosed: folder tabs. The active tab's bottom edge covers the rule so it joins the panel.
+        "group-data-[variant=enclosed]/tabs-list:rounded-b-none group-data-[variant=enclosed]/tabs-list:rounded-t-md group-data-[variant=enclosed]/tabs-list:px-4 group-data-[variant=enclosed]/tabs-list:h-9",
+        "group-data-[variant=enclosed]/tabs-list:border-(length:--border-width) group-data-[variant=enclosed]/tabs-list:border-transparent group-data-[variant=enclosed]/tabs-list:-mb-(--border-width)",
+        "group-data-[variant=enclosed]/tabs-list:data-[state=active]:border-border group-data-[variant=enclosed]/tabs-list:data-[state=active]:border-b-background group-data-[variant=enclosed]/tabs-list:data-[state=active]:bg-background",
         className
       )}
       {...props}
