@@ -2,6 +2,8 @@
 
 Melinda's base design system for personal projects: shadcn/ui components on React and Tailwind 4, documented in Storybook, with a matching Figma library. Each project gets its own theme file. Components never change per project.
 
+**Live Storybook:** https://green-melinda.github.io/design-system/ (use the Theme and Mode toolbars to switch themes and light or dark mode)
+
 ## See the components
 
 From this folder, start Storybook:
