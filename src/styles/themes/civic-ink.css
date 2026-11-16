@@ -64,7 +64,7 @@
   --ring: var(--ci-cobalt);
 
   /* Typography */
-  --typeface-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --typeface-heading: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif; /* Placeholder until a heading face is chosen */
   --typeface-body: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --typeface-mono: "Courier New", Courier, monospace;
   --heading-weight: 700;

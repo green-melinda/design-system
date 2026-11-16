@@ -131,7 +131,7 @@ export const ProjectSettings: Story = {
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div className="grid gap-2">
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl leading-tight">Spring field notes</h1>
+              <h1 className="text-3xl leading-9">Spring field notes</h1>
               <Badge variant="success">Shared</Badge>
             </div>
             <p className="text-sm text-muted-foreground">14 files · Last edited Tuesday at 4:12pm</p>
