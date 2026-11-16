@@ -31,10 +31,11 @@
     "P1.c",
     "P1.d",
     "P1.e",
-    "P1.g"
+    "P1.g",
+    "P1.f text styles"
   ],
   "variables": {
-    "Theme": "96 hidden colors (day/*, night/*) + shape/*, state/*, type/* (109 total)",
+    "Theme": "96 hidden colors (day/*, night/*) + shape/*, state/*, type/* (112 total; type/weight-regular|medium|semibold added 2026-11-16)",
     "Color": "49 slots (text/placeholder added 2026-11-14)",
     "Spacing": "14 steps, space/0 to space/128"
   },
@@ -42,10 +43,20 @@
     "Foundations": "0:1"
   },
   "frames": {
-    "Color check": "4:174"
+    "Color check": "4:174",
+    "Type check": "7:12"
   },
-  "next": "Text styles (deferred from P1), then Phase 2 pages and docs",
+  "next": "Phase 2 pages and docs, then Figma components",
   "pendingSync": [],
-  "lastSync": "2026-11-16: Civic Ink heading font Playfair Display -> Schibsted Grotesk",
-  "notInFigma": "label-tracking, label-case, heading-tracking, heading-case: no Figma variables yet. Add with text styles."
+  "lastSync": "2026-11-16: text styles, weight variables, dialog title on 24px line height",
+  "notInFigma": "Letter spacing and text case are fixed to Civic Ink values in text styles. Figma can't vary them by theme.",
+  "textStyles": {
+    "Heading/Page": "30/36",
+    "Heading/Dialog": "18/24",
+    "Title/Card": "16/16 semibold",
+    "Body/Default": "16/24",
+    "Body/Small": "14/20",
+    "Label/Default": "14/20 medium",
+    "Label/Badge": "12/16 medium, uppercase, +4%"
+  }
 }
