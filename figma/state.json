@@ -48,7 +48,7 @@
   },
   "next": "Phase 2 pages and docs, then Figma components",
   "pendingSync": [],
-  "lastSync": "2026-11-16: text styles, weight variables, dialog title on 24px line height",
+  "lastSync": "2026-11-16: Neutral uses Roboto and Roboto Mono in code and Figma (was system fonts in code, Inter in Figma)",
   "notInFigma": "Letter spacing and text case are fixed to Civic Ink values in text styles. Figma can't vary them by theme.",
   "textStyles": {
     "Heading/Page": "30/36",
