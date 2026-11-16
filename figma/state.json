@@ -46,5 +46,6 @@
   },
   "next": "Text styles (deferred from P1), then Phase 2 pages and docs",
   "pendingSync": [],
-  "lastSync": "2026-11-14: placeholder slot, corners 2px in both themes"
+  "lastSync": "2026-11-16: Civic Ink heading font Playfair Display -> Schibsted Grotesk",
+  "notInFigma": "label-tracking, label-case, heading-tracking, heading-case: no Figma variables yet. Add with text styles."
 }
